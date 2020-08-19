@@ -8,9 +8,9 @@ En este, se trabajarán conceptos básicos de programación y se pondrán en pr�
 
 Mi proyecto se llama: "TODO List".
 
-Este proyecto tiene como finalidad ayudar al usuario a llevar un mejor control de su tiempo durante el día, con las opciones de anotar tareas, agregar listas, materias o cualquier otra forma para clasificar los pendientes deseados.
+Este proyecto tiene como finalidad ayudar al usuario a llevar un mejor control de su tiempo durante el día, con la oportunidad de anotar tareas, agregar listas como materias o cualquier otra forma para clasificar los pendientes deseados y modificarlos (agregar o marcar como completado un pendiente).
 
-En este trabajo, pondré en práctica el uso de variables con diferentes tipos de datos, el uso de listas para clasificar pendientes, el uso de funciones y ciclos para facilitar tanto la escritura, como la lectura y funcionamiento del programa y finalmente, el uso de documentos tipo .txt para brindarle una mejor experiencia a todo usuario que pruebe el programa.
+En este trabajo, pondré en práctica el uso de variables con diferentes tipos de datos (string, int, bool), el uso de listas para clasificar pendientes, el uso de funciones y ciclos para facilitar tanto la escritura, como la lectura y funcionamiento del programa y finalmente, el uso de documentos tipo .txt para brindarle una mejor experiencia a todo usuario que pruebe el programa.
 
 
 # Funcionalidad del programa
@@ -30,3 +30,14 @@ En este trabajo, pondré en práctica el uso de variables con diferentes tipos d
 -Ver perfil del usuario
 
 -Salir
+
+
+# Ejemplo de algoritmo del programa
+
+1. *Ciclo para el menú*
+2. Opciones a elegir
+- pedir al usuario la opción deseada
+3. Casos para cada opción (agregar lista/ agregar pendiente/ tachar pendiente/ ver perfil)
+  3.1 Código para cada opción
+  - en caso de requerir algún dato, pedíselo al usuario
+4. Salir del ciclo  
