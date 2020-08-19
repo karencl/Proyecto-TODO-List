@@ -8,9 +8,10 @@ En este, se trabajarán conceptos básicos de programación y se pondrán en pr�
 
 Mi proyecto se llama: "TODO List".
 
-Este proyecto tiene como finalidad ayudar al usuario a llevar un mejor control de su tiempo durante el día, con la oportunidad de anotar tareas, agregar listas como materias o cualquier otra forma para clasificar los pendientes deseados y modificarlos (agregar o marcar como completado un pendiente).
+Este proyecto tiene como finalidad ayudar al usuario a llevar un mejor control de su tiempo durante el día, con la oportunidad de anotar tareas, agregar listas como materias o cualquier otra forma para clasificar los pendientes deseados y modificarlos agregarndo o marcarcando como completado un pendiente. 
+Y finalmente, por supuesto se va a tener la oportunidad de llevar la cuenta (automática) de todos los pendientes por hacer.
 
-En este trabajo, pondré en práctica el uso de variables con diferentes tipos de datos (string, int, bool), el uso de listas para clasificar pendientes, el uso de funciones y ciclos para facilitar tanto la escritura, como la lectura y funcionamiento del programa y finalmente, el uso de documentos tipo .txt para brindarle una mejor experiencia a todo usuario que pruebe el programa.
+En este trabajo, pondré en práctica el uso de variables con diferentes tipos de datos (string, int, bool), el uso de contadores crecientes y decrecientes para llevar un control de cuántos pendientes quedan por hacer, el uso de listas para clasificar pendientes, el uso de funciones y ciclos para facilitar tanto la escritura, como la lectura y funcionamiento del programa y finalmente, el uso de documentos tipo .txt para brindarle una mejor experiencia a todo usuario que pruebe el programa.
 
 
 # Funcionalidad del programa
@@ -25,7 +26,7 @@ En este trabajo, pondré en práctica el uso de variables con diferentes tipos d
 
 -Tachar pendientes de listas
 
--Ver listas y pendientes
+-Ver listas y pendientes (Y también cuántos listas tienes creadas y cuantos pendientes tienes en TOTAL)
 
 -Ver perfil del usuario
 
@@ -34,10 +35,14 @@ En este trabajo, pondré en práctica el uso de variables con diferentes tipos d
 
 # Ejemplo de algoritmo del programa
 
-1. *Ciclo para el menú*
+DESPUÉS DE HABER INGRESADO LOS DATOS DEL USUARIO...
+
+1. *Ciclo para el menú* (while)
 2. Opciones a elegir
-- pedir al usuario la opción deseada
-3. Casos para cada opción (agregar lista/ agregar pendiente/ tachar pendiente/ ver perfil)
+- pedir al usuario la opción deseada (input)
+3. Casos para cada opción (agregar lista/ agregar pendiente/ tachar pendiente/ ver perfil) - condicionales (if/elif/else)
   3.1 Código para cada opción
-  - en caso de requerir algún dato, pedíselo al usuario
+  - en caso de requerir algún dato, pedíselo al usuario (inputs)
 4. Salir del ciclo  
+
+CONTINUAR CON LO DEMÁS DEL CÓDIGO
