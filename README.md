@@ -37,12 +37,13 @@ En este trabajo, pondré en práctica el uso de variables con diferentes tipos d
 
 DESPUÉS DE HABER INGRESADO LOS DATOS DEL USUARIO...
 
-1. *Ciclo para el menú* (while)
+-Definir la opción temporatl para entrar el ciclo (ejemplo: op = 1)
+1. *Ciclo para el menú* (while) --> (while op != 0:)
 2. Opciones a elegir
 - pedir al usuario la opción deseada (input)
-3. Casos para cada opción (agregar lista/ agregar pendiente/ tachar pendiente/ ver perfil) - condicionales (if/elif/else)
+3. Casos para cada opción (agregar lista/ agregar pendiente/ tachar pendiente/ ver perfil) - condicionales (if/elif/else) --> (ejemplo: elif op == 1:)
   3.1 Código para cada opción
-  - en caso de requerir algún dato, pedíselo al usuario (inputs)
-4. Salir del ciclo  
+  - en caso de requerir algún dato, pedíselo al usuario (inputs) --> (ejemplo: nuevo_pendiente = int(input("Ingresa el nuevo pendiente:")) )
+4. Salir del ciclo (solo cuando "op" sea 0)
 
 CONTINUAR CON LO DEMÁS DEL CÓDIGO
