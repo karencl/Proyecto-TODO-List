@@ -37,7 +37,7 @@ En este trabajo, pondré en práctica el uso de variables con diferentes tipos d
 
 DESPUÉS DE HABER INGRESADO LOS DATOS DEL USUARIO...
 
--Definir la opción temporatl para entrar el ciclo (ejemplo: op = 1)
+-Definir la opción temporal para entrar el ciclo (ejemplo: op = 1)
 1. *Ciclo para el menú* (while) --> (while op != 0:)
 2. Opciones a elegir
 - pedir al usuario la opción deseada (input)
