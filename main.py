@@ -1,4 +1,4 @@
-# import funcionesTodoList as Funciones
+import FuncionesTodoList as Funciones
 
 LISTA_MATERIAS = []
 LISTA_PENDIENTES = []
@@ -15,10 +15,7 @@ print()
 
 # Solicita datos del usuario
 print("Danos tus datos para poder empezar!")
-matricula = input("Ingresa tu matrícula: ")
-correo = input("Ingres tu correo electrónico: ")
-num_semestre = int(input("Cuéntanos cuál semestre te encuentras cursando: "))
-edad = int(input("¿Cuál es tu edad? "))
+matricula, correo, num_semestre, edad = Funciones.solicitaDatosPerfil()
 num_materias = 0
 num_total_pendientes = 0
 print()
@@ -26,96 +23,107 @@ print()
 # imprime perfil del usuario
 print("Creando perfil...")
 print()
-print("PERFIL de", nombre)
-print("··················································")
-print("Nombre:", nombre)
-print("Matrícula:", matricula)
-print("Correo:", correo)
-print("Edad: ", edad)
-print("Año de nacimiento: ", 2020 - edad) #1 operador
-print("* Se encuentra cursando el semestre:", num_semestre)
-print("* Semestres por cursar:", 8 - num_semestre) #2 operador
-print("Número de materias agregadas:", num_materias)
-print("Número total de pendientes:", num_total_pendientes)
-print("··················································")
-print()
+Funciones.mostrarPerfil(nombre, matricula, correo, edad, num_semestre, num_materias, num_total_pendientes)
 print("Perfil creado con éxito! \nAhora estás list@ para empezar!")
 print()
 
 # Menú como un ciclo while
 opcion_seleccionada = 1
-while opcion_seleccionada != 0:
+while opcion_seleccionada != 6:
     print("¿Qué quieres hacer?")
     print("1) Ingresar una nueva materia")
     print("2) Ingresar un nuevo pendiente a una materia")
     print("3) Ver mis pendientes por materia")
     print("4) Ver mi perfil")
-    print("0) Salir")
+    print("5) Editar mi perfil")
+    print("6) Salir")
     print()
     opcion_seleccionada = int(input("Ingresa la opción deseada: "))
     print()
 
-    # opción 1 seleccionada
+    # opción 1 seleccionada (agregar materia)
     if opcion_seleccionada == 1:
         print("¿Cómo se llama la materia que quieres ingresar?")
         nombre_nueva_materia = input("Nombre: ")
         LISTA_MATERIAS.append(nombre_nueva_materia)
         LISTA_PENDIENTES.append([])
-        num_materias += 1 #3 operador
+        num_materias += 1
         print()
 
-    # opción 2 seleccionada
+    # opción 2 seleccionada (agregar pendiente)
     elif opcion_seleccionada == 2:
-        print("Tus materias:")
-        j = 1
-        for i in LISTA_MATERIAS:
-            print(j, "-", i)
-            j += 1 #4 operador
+        Funciones.mostrarMaterias(LISTA_MATERIAS)
         materia_seleccionada_op2 = int(input("¿A qué materia quieres ingresar un nuevo pendiente? "))
         print()
-        print("Nuevo pendiente para la materia:", LISTA_MATERIAS[materia_seleccionada_op2 - 1]) #5 operador
-        nuevo_pendiente = input("Ingresa pendiente: ")
-        LISTA_PENDIENTES[materia_seleccionada_op2 - 1].append(nuevo_pendiente)
-        num_total_pendientes += 1 #6 operador
+        print("Nuevo pendiente para la materia:", LISTA_MATERIAS[materia_seleccionada_op2 - 1])
+        Funciones.agregarPendiente(LISTA_PENDIENTES, materia_seleccionada_op2)
+        num_total_pendientes += 1
         print()
 
-    # opción 3 seleccionada
+    # opción 3 seleccionada (ver pendientes por materia)
     elif opcion_seleccionada == 3:
-        print("Tus materias:")
-        j = 1
-        for i in LISTA_MATERIAS:
-            print(j, "-", i)
-            j += 1 #7 operador
+        Funciones.mostrarMaterias(LISTA_MATERIAS)
         materia_seleccionada_op3 = int(input("¿De qué materia quieres ver tus pendientes? "))
         print()
-        print("Pendientes de: ", LISTA_MATERIAS[materia_seleccionada_op3 - 1]) #8 operador
-        k = 1
-        for i in LISTA_PENDIENTES[materia_seleccionada_op3 - 1]:
-            print(k, "-", i)
-            k += 1 #9 operador
-        print("Tiempo estimado para completar pendientes:", (k - 1) * 45, "min") #10 y 11 operador
+        Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op3)
         print()
+        seleccion = 1
+        while seleccion != 3:
+            print("¿Qué quieres hacer?")
+            print("1) Agregar nuevo pendiente")
+            print("2) Tachar un pendiente")
+            print("3) Volver al menú principal")
+            print()
+            opcion = int(input("Ingresa la opción deseada: "))
+            print()
 
-    # opción 4 seleccionada
+            # opción 1 (agregar nuevo pendiente)
+            if opcion == 1:
+                Funciones.agregarPendiente(LISTA_PENDIENTES, materia_seleccionada_op3)
+                num_total_pendientes += 1
+                print()
+                Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op3)
+                print()
+
+            # opción 2 (tachar pendiente)
+            elif opcion == 2:
+                Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op3)
+                print()
+                Funciones.tacharPendiente(LISTA_PENDIENTES, materia_seleccionada_op3)
+                num_total_pendientes -= 1
+                print()
+                Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op3)
+                print()
+
+            # opción 3 (volver al menú principal)
+            elif opcion == 3:
+                print("Volviendo al menú principal...")
+                print()
+                break
+
+            # opción erronea (mensaje de error)
+            else:
+                print("****************** Selecciona una opción valida. ******************")
+                print()
+
+    # opción 4 seleccionada (ver perfil)
     elif opcion_seleccionada == 4:
-        print("PERFIL de", nombre)
-        print("·················································")
-        print("Nombre:", nombre)
-        print("Matrícula:", matricula)
-        print("Correo:", correo)
-        print("* Se encuentra cursando el semestre:", num_semestre)
-        print("* Semestres por cursar:", 8 - num_semestre) #12 operador
-        print("Número de materias agregadas:", num_materias)
-        print("Número total de pendientes:", num_total_pendientes)
-        print("·················································")
+        Funciones.mostrarPerfil(nombre, matricula, correo, edad, num_semestre, num_materias, num_total_pendientes)
         print()
 
-    elif opcion_seleccionada == 0:
+    # opción 5 seleccionada (editar perfil)
+    elif opcion_seleccionada == 5:
+        matricula, correo, num_semestre, edad = Funciones.solicitaDatosPerfil()
+        print()
+
+    # opción 6 seleccionada (salir)
+    elif opcion_seleccionada == 6:
         print("Has decidido salir.")
         print()
 
+    # opción erronea (mensaje de error)
     else:
-        print("Selecciona una opción valida.")
+        print("****************** Selecciona una opción valida. ******************")
         print()
 
 print("Hasta pronto!")
