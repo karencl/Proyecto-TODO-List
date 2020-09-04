@@ -67,8 +67,8 @@ while opcion_seleccionada != 6:
         print()
         Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op3)
         print()
-        seleccion = 1
-        while seleccion != 3:
+        salir = False
+        while salir == False:
             print("¿Qué quieres hacer?")
             print("1) Agregar nuevo pendiente")
             print("2) Tachar un pendiente")
@@ -99,7 +99,7 @@ while opcion_seleccionada != 6:
             elif opcion == 3:
                 print("Volviendo al menú principal...")
                 print()
-                break
+                salir = True
 
             # opción erronea (mensaje de error)
             else:

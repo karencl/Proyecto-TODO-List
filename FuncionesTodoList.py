@@ -1,3 +1,5 @@
+"""Funciones utilizadas en el programa"""
+
 def solicitaDatosPerfil():
     matricula = input("Ingresa tu matrícula: ")
     correo = input("Ingres tu correo electrónico: ")
