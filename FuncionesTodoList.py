@@ -1,3 +1,8 @@
+"""Biblioteca extra usada"""
+import os   #   Ésta biblioteca me permite consultar si un archivo existe o no.
+            #   Y la utilizaré para verificar si el usuario que está corriendo el programa,
+            #   ya tiene su archivo o es necesario crear uno nuevo.
+
 """Funciones utilizadas en el programa"""
 
 def solicitaDatosPerfil():
@@ -55,4 +60,46 @@ def agregarPendiente(lista, materia_seleccionada: int):
 def tacharPendiente(lista, materia_seleccionada: int):
     tachar_pendiente = int(input("¿Cuál es el pendiente que quieres tachar? "))
     lista[materia_seleccionada - 1].pop(tachar_pendiente - 1)
+
+
+"""--------------Nuevas funciones para archivo del usuario--------------------"""
+
+def existeArchivo(ruta):
+    return os.path.isfile(ruta)
+
+
+def leerUsuario(nombre):
+    lista_pendientes = []
+    archivo_usuario = open(nombre + ".usuario", "r")
+    nombre = archivo_usuario.readline().rstrip()
+    matricula = archivo_usuario.readline().rstrip()
+    correo = archivo_usuario.readline().rstrip()
+    edad = int(archivo_usuario.readline())
+    num_semestre = int(archivo_usuario.readline())
+    num_materias = int(archivo_usuario.readline())
+    num_total_pendientes = int(archivo_usuario.readline())
+    listas = archivo_usuario.readlines()
+    materias = listas[0].replace("[", "").replace("]", "").replace(",", "").replace("'", "")
+    lista_materias = materias.split()
+    for i in range(1, len(lista_materias) + 1):
+        pendientes = listas[i].replace("[", "").replace("]", "").replace(",", "").replace("'", "")
+        pen_temp = pendientes.split()
+        lista_pendientes.append(pen_temp)
+    archivo_usuario.close()
+    return nombre, matricula, correo, edad, num_semestre, num_materias, lista_materias, num_total_pendientes, lista_pendientes
+
+
+def escribirNuevoUsuario(nombre, matricula, correo, edad, num_semestre, num_materias, num_total_pendientes, lista_materias, lista_pendientes):
+    archivo_usuario = open(nombre + ".usuario", "w")
+    archivo_usuario.write(nombre + "\n")
+    archivo_usuario.write(matricula + "\n")
+    archivo_usuario.write(correo + "\n")
+    archivo_usuario.write(str(edad) + "\n")
+    archivo_usuario.write(str(num_semestre) + "\n")
+    archivo_usuario.write(str(num_materias) + "\n")
+    archivo_usuario.write(str(lista_materias) + "\n")
+    archivo_usuario.write(str(num_total_pendientes) + "\n")
+    for i in lista_pendientes:
+        archivo_usuario.write(str(i) + "\n")
+    archivo_usuario.close()
 
