@@ -34,20 +34,18 @@ print()
 
 # Menú como un ciclo while
 opcion_seleccionada = 1
-while opcion_seleccionada != 6:
+while opcion_seleccionada != 7:
     print("¿Qué quieres hacer?")
     print("1) Ingresar una nueva materia")
-    print("2) Ingresar un nuevo pendiente a una materia")
-    print("3) Ver mis pendientes por materia")
-    print("4) Ver mi perfil")
-    print("5) Editar mi perfil")
-    print("6) Salir")
+    print("2) Borrar una materia")
+    print("3) Ingresar un nuevo pendiente a una materia")
+    print("4) Ver mis pendientes por materia")
+    print("5) Ver mi perfil")
+    print("6) Editar mi perfil")
+    print("7) Salir")
     print()
     opcion_seleccionada = int(input("Ingresa la opción deseada: "))
     print()
-
-
-#----------------------- Estructuras de decisión ------------------------------
 
     # opción 1 seleccionada (agregar materia)
     if opcion_seleccionada == 1:
@@ -58,22 +56,35 @@ while opcion_seleccionada != 6:
         num_materias += 1
         print()
 
-    # opción 2 seleccionada (agregar pendiente)
+    # opción 2 seleccionada (borrar materia)
     elif opcion_seleccionada == 2:
         Funciones.mostrarMaterias(LISTA_MATERIAS)
-        materia_seleccionada_op2 = int(input("¿A qué materia quieres ingresar un nuevo pendiente? "))
         print()
-        print("Nuevo pendiente para la materia:", LISTA_MATERIAS[materia_seleccionada_op2 - 1])
-        Funciones.agregarPendiente(LISTA_PENDIENTES, materia_seleccionada_op2)
+        materia_seleccionada_op2 = int(input("¿Qué materia quieres borrar? "))
+        print("Se eliminará la materia:", LISTA_MATERIAS[materia_seleccionada_op2 - 1])
+        LISTA_MATERIAS.remove(LISTA_MATERIAS[materia_seleccionada_op2 - 1])
+        num_materias -= 1
+        num_total_pendientes -= len(LISTA_PENDIENTES[materia_seleccionada_op2 - 1])
+        LISTA_PENDIENTES.remove(LISTA_PENDIENTES[materia_seleccionada_op2 - 1])
+        print("Listo!")
+        print()
+
+    # opción 3 seleccionada (agregar pendiente)
+    elif opcion_seleccionada == 3:
+        Funciones.mostrarMaterias(LISTA_MATERIAS)
+        materia_seleccionada_op3 = int(input("¿A qué materia quieres ingresar un nuevo pendiente? "))
+        print()
+        print("Nuevo pendiente para la materia:", LISTA_MATERIAS[materia_seleccionada_op3 - 1])
+        Funciones.agregarPendiente(LISTA_PENDIENTES, materia_seleccionada_op3)
         num_total_pendientes += 1
         print()
 
-    # opción 3 seleccionada (ver pendientes por materia)
-    elif opcion_seleccionada == 3:
+    # opción 4 seleccionada (ver pendientes por materia)
+    elif opcion_seleccionada == 4:
         Funciones.mostrarMaterias(LISTA_MATERIAS)
-        materia_seleccionada_op3 = int(input("¿De qué materia quieres ver tus pendientes? "))
+        materia_seleccionada_op4 = int(input("¿De qué materia quieres ver tus pendientes? "))
         print()
-        Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op3)
+        Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op4)
         print()
         salir = False
         while salir == False:
@@ -87,20 +98,20 @@ while opcion_seleccionada != 6:
 
             # opción 1 (agregar nuevo pendiente)
             if opcion == 1:
-                Funciones.agregarPendiente(LISTA_PENDIENTES, materia_seleccionada_op3)
+                Funciones.agregarPendiente(LISTA_PENDIENTES, materia_seleccionada_op4)
                 num_total_pendientes += 1
                 print()
-                Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op3)
+                Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op4)
                 print()
 
             # opción 2 (tachar pendiente)
             elif opcion == 2:
-                Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op3)
+                Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op4)
                 print()
-                Funciones.tacharPendiente(LISTA_PENDIENTES, materia_seleccionada_op3)
+                Funciones.tacharPendiente(LISTA_PENDIENTES, materia_seleccionada_op4)
                 num_total_pendientes -= 1
                 print()
-                Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op3)
+                Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op4)
                 print()
 
             # opción 3 (volver al menú principal)
@@ -114,18 +125,18 @@ while opcion_seleccionada != 6:
                 print("****************** Selecciona una opción valida. ******************")
                 print()
 
-    # opción 4 seleccionada (ver perfil)
-    elif opcion_seleccionada == 4:
+    # opción 5 seleccionada (ver perfil)
+    elif opcion_seleccionada == 5:
         Funciones.mostrarPerfil(nombre, matricula, correo, edad, num_semestre, num_materias, num_total_pendientes)
         print()
 
-    # opción 5 seleccionada (editar perfil)
-    elif opcion_seleccionada == 5:
+    # opción 6 seleccionada (editar perfil)
+    elif opcion_seleccionada == 6:
         matricula, correo, num_semestre, edad = Funciones.solicitaDatosPerfil()
         print()
 
-    # opción 6 seleccionada (salir)
-    elif opcion_seleccionada == 6:
+    # opción 7 seleccionada (salir)
+    elif opcion_seleccionada == 7:
         print("Has decidido salir.")
         print("Guardando datos del usuario...")
         Funciones.escribirNuevoUsuario(nombre, matricula, correo, edad, num_semestre, num_materias, LISTA_MATERIAS,

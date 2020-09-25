@@ -20,9 +20,9 @@ def mostrarPerfil(nombre, matricula, correo, edad, num_semestre, num_materias, n
     print("Matrícula:", matricula)
     print("Correo:", correo)
     print("Edad: ", edad)
-    print("Año de nacimiento: ", 2020 - edad)  # 1 operador
+    print("Año de nacimiento: ", 2020 - edad)
     print("* Se encuentra cursando el semestre:", num_semestre)
-    print("* Semestres por cursar:", 8 - num_semestre)  # 2 operador
+    print("* Semestres por cursar:", 8 - num_semestre)
     print("Número de materias agregadas:", num_materias)
     print("Número total de pendientes:", num_total_pendientes)
     print("··················································")
@@ -32,7 +32,7 @@ def mostrarPerfil(nombre, matricula, correo, edad, num_semestre, num_materias, n
 def mostrarMaterias(lista_materias):
     print("Tus materias:")
     j = 1
-    for i in lista_materias:
+    for i in lista_materias: #Ciclo for
         print(j, "-", i)
         j += 1
     return lista_materias
@@ -41,7 +41,7 @@ def mostrarMaterias(lista_materias):
 def mostrarPendientes(lista_materias, lista_pendientes, materia_seleccionada):
     print("Pendientes de:", lista_materias[materia_seleccionada - 1])
     k = 1
-    for i in lista_pendientes[materia_seleccionada - 1]:
+    for i in lista_pendientes[materia_seleccionada - 1]: #Ciclo for
         print(k, "-", i)
         k += 1
     tiempoPendientes(k)
@@ -81,7 +81,7 @@ def leerUsuario(nombre):
     listas = archivo_usuario.readlines()
     materias = listas[0].replace("[", "").replace("]", "").replace(",", "").replace("'", "")
     lista_materias = materias.split()
-    for i in range(1, len(lista_materias) + 1):
+    for i in range(1, len(lista_materias) + 1): #Ciclo for
         pendientes = listas[i].replace("[", "").replace("]", "").replace(",", "").replace("'", "")
         pen_temp = pendientes.split()
         lista_pendientes.append(pen_temp)
@@ -99,7 +99,7 @@ def escribirNuevoUsuario(nombre, matricula, correo, edad, num_semestre, num_mate
     archivo_usuario.write(str(num_materias) + "\n")
     archivo_usuario.write(str(lista_materias) + "\n")
     archivo_usuario.write(str(num_total_pendientes) + "\n")
-    for i in lista_pendientes:
+    for i in lista_pendientes: #Ciclo for
         archivo_usuario.write(str(i) + "\n")
     archivo_usuario.close()
 
