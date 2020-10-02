@@ -1,7 +1,8 @@
 import FuncionesTodoList as Funciones
 
-LISTA_MATERIAS = []
-LISTA_PENDIENTES = []
+#Listas utilizadas:
+LISTA_MATERIAS = []   #Lista "simple"
+LISTA_PENDIENTES = [] #Lista anidada
 
 print("Bienvenid@! \n¿Cómo te llamas?")
 
@@ -51,8 +52,8 @@ while opcion_seleccionada != 7:
     if opcion_seleccionada == 1:
         print("¿Cómo se llama la materia que quieres ingresar?")
         nombre_nueva_materia = input("Nombre: ")
-        LISTA_MATERIAS.append(nombre_nueva_materia)
-        LISTA_PENDIENTES.append([])
+        LISTA_MATERIAS.append(nombre_nueva_materia) #Se añade la materia a la lista de materias
+        LISTA_PENDIENTES.append([])  #Se crea una nueva lista en la lista de pendientes, para la materia creada
         num_materias += 1
         print()
 
@@ -62,10 +63,10 @@ while opcion_seleccionada != 7:
         print()
         materia_seleccionada_op2 = int(input("¿Qué materia quieres borrar? "))
         print("Se eliminará la materia:", LISTA_MATERIAS[materia_seleccionada_op2 - 1])
-        LISTA_MATERIAS.remove(LISTA_MATERIAS[materia_seleccionada_op2 - 1])
+        LISTA_MATERIAS.remove(LISTA_MATERIAS[materia_seleccionada_op2 - 1]) #Se elimina la materia de la lista materias
         num_materias -= 1
         num_total_pendientes -= len(LISTA_PENDIENTES[materia_seleccionada_op2 - 1])
-        LISTA_PENDIENTES.remove(LISTA_PENDIENTES[materia_seleccionada_op2 - 1])
+        LISTA_PENDIENTES.remove(LISTA_PENDIENTES[materia_seleccionada_op2 - 1]) #Se elimina la lista de pendientes de dicha materia, dentro de la lista pendientes
         print("Listo!")
         print()
 
