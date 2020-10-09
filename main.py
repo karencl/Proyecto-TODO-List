@@ -1,5 +1,8 @@
 import FuncionesTodoList as Funciones
 
+#Las listas (simple y anidada) ya las había agregado desde el primer avance...
+#Puse comentarios en donde hago uso de ellas :)
+
 #Listas utilizadas:
 LISTA_MATERIAS = []   #Lista "simple"
 LISTA_PENDIENTES = [] #Lista anidada
