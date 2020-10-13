@@ -1,7 +1,7 @@
 """Biblioteca extra usada"""
-import os   #   Ésta biblioteca me permite consultar si un archivo existe o no.
-            #   Y la utilizaré para verificar si el usuario que está corriendo el programa,
-            #   ya tiene su archivo o es necesario crear uno nuevo.
+import os   # Ésta biblioteca me permite consultar si un archivo existe o no.
+            # Y la utilizaré para verificar si el usuario que está corriendo el programa,
+            # ya tiene su archivo o es necesario crear uno nuevo.
 
 
 """Funciones utilizadas en el programa"""
@@ -30,7 +30,8 @@ def mostrarPerfil(nombre, matricula, correo, edad, num_semestre, num_materias, n
     print()
 
 
-def mostrarMaterias(lista_materias): #Imprime la lista de materias
+# Imprime la lista de materias
+def mostrarMaterias(lista_materias):
     print("Tus materias:")
     j = 1
     for i in lista_materias:
@@ -39,7 +40,8 @@ def mostrarMaterias(lista_materias): #Imprime la lista de materias
     return lista_materias
 
 
-def mostrarPendientes(lista_materias, lista_pendientes, materia_seleccionada): #Imprime la lista de pendientes de la materia deseada
+# Imprime la lista de pendientes (dentro de la lista general de pendientes), de la materia deseada
+def mostrarPendientes(lista_materias, lista_pendientes, materia_seleccionada):
     print("Pendientes de:", lista_materias[materia_seleccionada - 1])
     k = 1
     for i in lista_pendientes[materia_seleccionada - 1]:
@@ -48,17 +50,20 @@ def mostrarPendientes(lista_materias, lista_pendientes, materia_seleccionada): #
     tiempoPendientes(k)
 
 
+# Calcula el tiempo estimado para completar los pendientes de una materia
 def tiempoPendientes(n):
     print("** Tiempo estimado para completar pendientes:", (n - 1) * 45, "min **")
     return n
 
 
-def agregarPendiente(lista, materia_seleccionada: int): #Agrega pendiente a la lista de pendientes de la materia deseada
+# Agrega un pendiente a la lista de pendientes (dentro de la lista general de pendientes), de la materia deseada
+def agregarPendiente(lista, materia_seleccionada: int):
     nuevo_pendiente = input("Ingresa pendiente: ")
     lista[materia_seleccionada - 1].append(nuevo_pendiente)
 
 
-def tacharPendiente(lista, materia_seleccionada: int): #Elimina pendiente de la lista de pendientes de la materia deseada
+# Elimina un pendiente de la lista de pendientes (dentro de la lista general de pendientes), de la materia deseada
+def tacharPendiente(lista, materia_seleccionada: int):
     tachar_pendiente = int(input("¿Cuál es el pendiente que quieres tachar? "))
     lista[materia_seleccionada - 1].pop(tachar_pendiente - 1)
 
@@ -79,7 +84,9 @@ def leerUsuario(nombre):
     num_semestre = int(archivo_usuario.readline())
     num_materias = int(archivo_usuario.readline())
     num_total_pendientes = int(archivo_usuario.readline())
-    listas = archivo_usuario.readlines() #Lee las listas (materias y pendientes) del archivo .usuario (como Str), y luego las convierte en listas nuevamente
+
+    # Lee las listas (materias y pendientes) del archivo .usuario (como Str), y luego las convierte en listas nuevamente
+    listas = archivo_usuario.readlines()
     materias = listas[0].replace("[", "").replace("]", "").replace(",", "").replace("'", "")
     lista_materias = materias.split()
     for i in range(1, len(lista_materias) + 1):
@@ -98,9 +105,13 @@ def escribirNuevoUsuario(nombre, matricula, correo, edad, num_semestre, num_mate
     archivo_usuario.write(str(edad) + "\n")
     archivo_usuario.write(str(num_semestre) + "\n")
     archivo_usuario.write(str(num_materias) + "\n")
-    archivo_usuario.write(str(lista_materias) + "\n") #Guarda la lista de materias en el archivo .usuario (como Str)
+
+    # Guarda la lista de materias en el archivo .usuario (como Str)
+    archivo_usuario.write(str(lista_materias) + "\n")
     archivo_usuario.write(str(num_total_pendientes) + "\n")
-    for i in lista_pendientes: #Guarda cada lista dentro de la lista pendientes, en el archivo .usuario (como Str)
+
+    # Guarda cada lista dentro de la lista pendientes, en el archivo .usuario (como Str)
+    for i in lista_pendientes:
         archivo_usuario.write(str(i) + "\n")
     archivo_usuario.close()
 

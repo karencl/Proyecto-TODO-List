@@ -1,11 +1,8 @@
 import FuncionesTodoList as Funciones
 
-#Las listas (simple y anidada) ya las había agregado desde el primer avance...
-#Puse comentarios en donde hago uso de ellas :)
-
-#Listas utilizadas:
-LISTA_MATERIAS = []   #Lista "simple"
-LISTA_PENDIENTES = [] #Lista anidada
+# Listas utilizadas:
+LISTA_MATERIAS = []   # Lista "simple"
+LISTA_PENDIENTES = [] # Lista "simple", que posteriormente se le agregan más listas, convirtiéndola en una lista anidada
 
 print("Bienvenid@! \n¿Cómo te llamas?")
 
@@ -17,19 +14,20 @@ print("Hola", nombre, "\nEsto es TODO List. \n"
                       "en tu día a día.")
 print()
 
+# Revisa si el archivo con el nombre existe
 if Funciones.existeArchivo(nombre + ".usuario"):
     print("Leyendo datos del usuario...")
     print()
     (nombre, matricula, correo, edad, num_semestre, num_materias, LISTA_MATERIAS, num_total_pendientes, LISTA_PENDIENTES) = Funciones.leerUsuario(nombre)
 else:
-    # Solicita datos del usuario
+    # Si no, se solicitan los datos del usuario
     print("Danos tus datos para poder empezar!")
     matricula, correo, num_semestre, edad = Funciones.solicitaDatosPerfil()
     num_materias = 0
     num_total_pendientes = 0
     print()
 
-# imprime perfil del usuario
+# Imprime perfil del usuario
 print("Creando perfil...")
 print()
 Funciones.mostrarPerfil(nombre, matricula, correo, edad, num_semestre, num_materias, num_total_pendientes)
@@ -55,8 +53,8 @@ while opcion_seleccionada != 7:
     if opcion_seleccionada == 1:
         print("¿Cómo se llama la materia que quieres ingresar?")
         nombre_nueva_materia = input("Nombre: ")
-        LISTA_MATERIAS.append(nombre_nueva_materia) #Se añade la materia a la lista de materias
-        LISTA_PENDIENTES.append([])  #Se crea una nueva lista en la lista de pendientes, para la materia creada
+        LISTA_MATERIAS.append(nombre_nueva_materia) # Se añade la materia a la lista de materias
+        LISTA_PENDIENTES.append([])  # Se crea una nueva lista en la lista de pendientes, para la materia creada
         num_materias += 1
         print()
 
@@ -66,12 +64,12 @@ while opcion_seleccionada != 7:
         print()
         materia_seleccionada_op2 = int(input("¿Qué materia quieres borrar? "))
         print("Se eliminará la materia:", LISTA_MATERIAS[materia_seleccionada_op2 - 1])
-        LISTA_MATERIAS.remove(LISTA_MATERIAS[materia_seleccionada_op2 - 1]) #Se elimina la materia de la lista materias
+        LISTA_MATERIAS.remove(LISTA_MATERIAS[materia_seleccionada_op2 - 1]) # Se elimina la materia de la lista materias
         num_materias -= 1
         num_total_pendientes -= len(LISTA_PENDIENTES[materia_seleccionada_op2 - 1])
-        LISTA_PENDIENTES.remove(LISTA_PENDIENTES[materia_seleccionada_op2 - 1]) #Se elimina la lista de pendientes de dicha materia, dentro de la lista pendientes
-        print("Listo!")
-        print()
+        LISTA_PENDIENTES.remove(LISTA_PENDIENTES[materia_seleccionada_op2 - 1])  # Se elimina la lista de pendientes de
+        print("Listo!")                                                          # dicha materia, dentro de la lista
+        print()                                                                  # pendientes
 
     # opción 3 seleccionada (agregar pendiente)
     elif opcion_seleccionada == 3:
@@ -100,7 +98,7 @@ while opcion_seleccionada != 7:
             opcion = int(input("Ingresa la opción deseada: "))
             print()
 
-            # opción 1 (agregar nuevo pendiente)
+            # opción 1 de opción 4 (agregar nuevo pendiente)
             if opcion == 1:
                 Funciones.agregarPendiente(LISTA_PENDIENTES, materia_seleccionada_op4)
                 num_total_pendientes += 1
@@ -108,7 +106,7 @@ while opcion_seleccionada != 7:
                 Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op4)
                 print()
 
-            # opción 2 (tachar pendiente)
+            # opción 2 de opción 4 (tachar pendiente)
             elif opcion == 2:
                 Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op4)
                 print()
@@ -118,13 +116,13 @@ while opcion_seleccionada != 7:
                 Funciones.mostrarPendientes(LISTA_MATERIAS, LISTA_PENDIENTES, materia_seleccionada_op4)
                 print()
 
-            # opción 3 (volver al menú principal)
+            # opción 3 de opción 4 (volver al menú principal)
             elif opcion == 3:
                 print("Volviendo al menú principal...")
                 print()
                 salir = True
 
-            # opción erronea (mensaje de error)
+            # opción erronea de opción 4 (mensaje de error)
             else:
                 print("****************** Selecciona una opción valida. ******************")
                 print()
@@ -143,8 +141,7 @@ while opcion_seleccionada != 7:
     elif opcion_seleccionada == 7:
         print("Has decidido salir.")
         print("Guardando datos del usuario...")
-        Funciones.escribirNuevoUsuario(nombre, matricula, correo, edad, num_semestre, num_materias, LISTA_MATERIAS,
-                                       num_total_pendientes, LISTA_PENDIENTES)
+        Funciones.escribirNuevoUsuario(nombre, matricula, correo, edad, num_semestre, num_materias, LISTA_MATERIAS, num_total_pendientes, LISTA_PENDIENTES)
         print()
 
     # opción erronea (mensaje de error)
