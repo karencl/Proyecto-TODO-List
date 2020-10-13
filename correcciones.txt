@@ -1,0 +1,28 @@
+============================ 1 =====================================
+Aclaración sobre el avance 6 (listas anidadas o matrices):
+
+Me comentaron que no había utilizado ninguna lista anidada, pero no es así.
+La lista "LISTA_PENDIENTES", es una lista que se declara como "simple" ([]), pero conforme se corre el programa, se le van agregando listas de pendientes de cada materia.
+
+
+Prueba de donde se hace uso de esta:
+
+LISTA_PENDIENTES = []
+LISTA_PENDIENTES.append([]) #En la opción del menú: "agregar materia". (Automáticamente se agrega una lista en la lista de pendientes para esa materia)
+
+# Agrega un pendiente a la lista de pendientes (dentro de la lista general de pendientes), de la materia deseada
+def agregarPendiente(lista, materia_seleccionada: int):
+    nuevo_pendiente = input("Ingresa pendiente: ")
+    lista[materia_seleccionada - 1].append(nuevo_pendiente)
+
+
+# Elimina un pendiente de la lista de pendientes (dentro de la lista general de pendientes), de la materia deseada
+def tacharPendiente(lista, materia_seleccionada: int):
+    tachar_pendiente = int(input("¿Cuál es el pendiente que quieres tachar? "))
+    lista[materia_seleccionada - 1].pop(tachar_pendiente - 1)
+    
+    
+Ejemplo de como queda la LISTA_PENDIENTES:
+
+LISTA_PENDIENTES = [['sumar','resta'],['you,'I','was'],['Enlaces químicos','elementos'],['Kepler','Newton','cinemática']]
+
