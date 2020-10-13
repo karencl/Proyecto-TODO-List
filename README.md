@@ -1,3 +1,11 @@
+# Aclaraciones sobre archivos:
+-El archivo "main.py" es el principal, donde está el menú y es el que corre.
+
+-El archivo "FuncionesTodoList.py" es el archivo donde tengo todas las funciones de mi programa. (Esto con la finalidad de facilitar la lectura del código y tenerlo más ordenado).
+
+-Finalmente, el archivo "Karen.usuario", es un archivo de prueba sobre los datos que se guardan al correr el programa y como es que son guardados.
+
+
 # Proyecto para la materia: Pensamiento computacional para ingeniería.
 Este trabajo es parte del proyecto para la materia "Pensamiento computacional para ingeniería".
 
