@@ -1,4 +1,4 @@
-# ----------------- Biblioteca extra usada -----------------
+# ------------------- Biblioteca extra usada -------------------
 import os
 """
     Ésta biblioteca me permite consultar si un archivo existe o no.

@@ -28,7 +28,7 @@ else:
     num_total_pendientes = 0
     print()
 
-# Imprime perfil del usuario
+# Imprime el perfil del usuario
 print("Creando perfil...")
 print()
 Funciones.mostrar_perfil(nombre, matricula, correo, edad, num_semestre, num_materias, num_total_pendientes)
